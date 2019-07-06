@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4263164404340854}
   - component: {fileID: 212613766157084640}
   - component: {fileID: 95848277765979770}
+  - component: {fileID: 61429941333868570}
+  - component: {fileID: 114154483069510606}
   m_Layer: 0
   m_Name: pink_hea4
   m_TagString: Untagged
@@ -35,12 +37,37 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321084637666830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -2.03, z: 0}
+  m_LocalPosition: {x: 1.5, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61429941333868570
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321084637666830}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.017931998, y: 0.05020964}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6628779, y: 0.64135957}
+  m_EdgeRadius: 0
 --- !u!95 &95848277765979770
 Animator:
   serializedVersion: 3
@@ -58,6 +85,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114154483069510606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321084637666830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791eec1f692a7a6498531b6b19dcf49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probtype: 0
 --- !u!212 &212613766157084640
 SpriteRenderer:
   m_ObjectHideFlags: 1
