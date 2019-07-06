@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: tile_brick
+  m_Name: tile_grass2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: aa50947c3bf2bfe4faa667e8bb584d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e4b66eaa7052d044aa3b9e59c540bcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -32,4 +32,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 0

@@ -22,7 +22,7 @@ public class cat_controller : MonoBehaviour
 
 	void Start()
 	{
-		GameObject maincamera=GameObject.FindGameObjectWithTag("MainCamera");
+		GameObject maincamera=GameObject.FindGameObjectWithTag("MainCamera2");
 		GridHeight=maincamera.GetComponent<main_scene_controller>().GridHeight;
 		rigidbody2d=GetComponent<Rigidbody2D>();
 		//currentTri=currentHeart=0;
