@@ -17,12 +17,15 @@ public class cat_controller : MonoBehaviour
 
 	public Tilemap tilemap;
 	public Tile boxTile;
+	public int currentTri=5;
+	public int currentHeart=5;
 
 	void Start()
 	{
 		GameObject maincamera=GameObject.FindGameObjectWithTag("MainCamera");
 		GridHeight=maincamera.GetComponent<main_scene_controller>().GridHeight;
 		rigidbody2d=GetComponent<Rigidbody2D>();
+		//currentTri=currentHeart=0;
 	}
 	
 	void Update() 
@@ -56,16 +59,21 @@ public class cat_controller : MonoBehaviour
 				bool flag=true;
 				Vector3Int cellPosition1=tilemap.WorldToCell(rigidbody2d.position+vec_detect);
 				Vector3Int cellPosition2=tilemap.WorldToCell(rigidbody2d.position+2*vec_detect);
-				Vector2 cellPosition1_2d=new Vector2(0,0);
-				cellPosition1_2d.x+=cellPosition1.x;cellPosition1_2d.y+=cellPosition1.y;
-				if(Physics2D.Raycast(cellPosition1_2d,vec_detect,GridHeight,1<<LayerMask.NameToLayer("Collider")))
-				{
-					TileBase tb2=tilemap.GetTile(cellPosition2);
-					if(tb2!=null) flag=false;
-				}
 				TileBase tb1=tilemap.GetTile(cellPosition1);
-				if(tb1!=null&&flag)
+				if(tb1==null) flag=false;
+				if(flag&&Physics2D.Raycast(rigidbody2d.position+2*vec_detect,vec_detect,0,1<<LayerMask.NameToLayer("Collider")))
+					flag=false;
+				if(flag)
 				{
+					Debug.Log(tb1.name);
+					if(tb1.name=="tile_boxA")
+						if(currentHeart>0) currentHeart--; else flag=false;
+					if(tb1.name=="tile_boxB")
+						if(currentTri>0) currentTri--; else flag=false;
+				}
+				if(flag)
+				{
+					Debug.Log("TRIANGLE:"+currentTri+"   HEART:"+currentHeart);
 					tilemap.SetTile(cellPosition1,null);
 					tilemap.SetTile(cellPosition2,tb1);
 					rigidbody2d.MovePosition(rigidbody2d.position+vec_detect);
