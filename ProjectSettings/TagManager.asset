@@ -10,6 +10,8 @@ TagManager:
   - Tri
   - Heart
   - NazoHandler
+  - Master
+  - HUD_hint
   layers:
   - Default
   - TransparentFX

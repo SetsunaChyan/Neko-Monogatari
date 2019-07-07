@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class cat_controller : MonoBehaviour 
 {
@@ -9,6 +10,8 @@ public class cat_controller : MonoBehaviour
 	private const int RIGHT=1;
 	private const int UP=2;
 	private const int DOWN=3;
+
+    private int firstHint = 0;
 
 	private int direction=LEFT;
 	private float GridHeight;
@@ -30,6 +33,13 @@ public class cat_controller : MonoBehaviour
 	
 	void Update() 
 	{
+        if(currentHeart>0&&firstHint==0)
+        {
+            firstHint = 1;
+            Hint_controller ctr = GameObject.FindGameObjectWithTag("HUD_hint").GetComponent<Hint_controller>();
+            ctr.display();
+        }
+
 		Vector2 pos=rigidbody2d.position;
 
 		int keyPressed=-1;
@@ -79,12 +89,45 @@ public class cat_controller : MonoBehaviour
 					tilemap.SetTile(cellPosition1,null);
 					tilemap.SetTile(cellPosition2,tb1);
 					rigidbody2d.MovePosition(rigidbody2d.position+vec_detect);
+                    return ;
 				} 
 			}
 		}
 
-		//判断前方是否有障碍物
-		if(keyPressed!=-1)
+        if (Physics2D.Raycast(rigidbody2d.position, vec_detect, GridHeight, 1 << LayerMask.NameToLayer("Collider")))
+        {
+            GameObject obj = Physics2D.Raycast(rigidbody2d.position, vec_detect, GridHeight, 1 << LayerMask.NameToLayer("Collider")).collider.gameObject;
+            if (obj.name == "master_0")
+            {
+                if(currentTri<=0)
+                {
+                    //bad end
+                    Debug.Log("bad end");
+                    SceneManager.LoadScene("badend");
+                }
+                else if(currentTri>=1&&currentHeart==0)
+                {
+                    //normal end
+                    Debug.Log("normal end");
+                    SceneManager.LoadScene("normalend_");
+                    GameObject tmp = (GameObject)Resources.Load("prefab/NE_Source");
+                    Instantiate(tmp);	//	实例化
+                }
+                else
+                {
+                    //good end
+                    Debug.Log("good end");
+                    SceneManager.LoadScene("goodend_");
+                    GameObject tmp = (GameObject)Resources.Load("prefab/GE_Source");
+                    Instantiate(tmp);	//	实例化
+                }
+
+
+            }
+        }
+
+        //判断前方是否有障碍物
+        if (keyPressed!=-1)
 		{
 			//如果没有障碍物则移动
 			if(!Physics2D.Raycast(rigidbody2d.position,vec_detect,GridHeight,1<<LayerMask.NameToLayer("Collider"))) 
@@ -92,6 +135,12 @@ public class cat_controller : MonoBehaviour
         		Vector2 newpos=rigidbody2d.position+vec_detect;
         		rigidbody2d.MovePosition(newpos);
 			}
+            else
+            {
+                Debug.Log("撞墙啦");
+                GameObject tmp = (GameObject)Resources.Load("prefab/Collision_Source");
+                Instantiate(tmp);	//	实例化
+            }
 		}
 	}
 }

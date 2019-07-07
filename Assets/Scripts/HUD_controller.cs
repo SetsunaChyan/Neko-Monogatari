@@ -26,7 +26,7 @@ public class HUD_controller : MonoBehaviour
 				if(obj[i][j]==null) continue;
 				Vector3 pos=GameObject.FindGameObjectWithTag("Cat").transform.position;
 				pos.z=-5;
-				pos.x+=0.7f*i-13;pos.y+=-0.7f*j+5;
+				pos.x+=0.7f*i-6;pos.y+=-0.7f*j+5;
 				obj[i][j].transform.position=pos;
 			}
 		while(cat.currentHeart>currentNum[0]) add(0);

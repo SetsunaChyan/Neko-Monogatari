@@ -21,7 +21,7 @@ public class start_scene_canva : MonoBehaviour {
 
     public void start_game()
     {
-        SceneManager.LoadScene("main_scene");
+        SceneManager.LoadScene("hint_scene");
     }
 
     public void exit_game()
