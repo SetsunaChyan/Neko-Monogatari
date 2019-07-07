@@ -31,7 +31,6 @@ public class Nazohandler_controller : MonoBehaviour
 		if(num==1)
 		{
 			setT(-4.5f,6.5f,brick);
-			setT(-5.5f,4.5f,brick);
 		}
 		if(num==2)
 		{
@@ -49,7 +48,6 @@ public class Nazohandler_controller : MonoBehaviour
 		if(num==1)
 		{
 			setT(-4.5f,6.5f,floor);
-			setT(-5.5f,4.5f,floor);
 		}
 		if(num==2)
 		{
@@ -59,6 +57,10 @@ public class Nazohandler_controller : MonoBehaviour
 		if(num==3)
 		{
 			setT(6.5f,7.5f,floor);
+		}
+		if(num==4)
+		{
+			setT(-5.5f,4.5f,floor);
 		}
 	}
 }
