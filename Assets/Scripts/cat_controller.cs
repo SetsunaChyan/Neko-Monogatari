@@ -19,8 +19,6 @@ public class cat_controller : MonoBehaviour
 	public Tile boxTile;
 	public int currentTri=5;
 	public int currentHeart=5;
-	GameObject new_source;
-	//	新建的音源
 
 	void Start()
 	{
@@ -76,8 +74,7 @@ public class cat_controller : MonoBehaviour
 				if(flag)
 				{
 					GameObject tmp = (GameObject)Resources.Load("prefab/Box_Source");
-					new_source = Instantiate(tmp);	//	实例化
-					// Source_Controller sc = tmp.GetComponent<Source_Controller>();
+					Instantiate(tmp);	//	实例化
 					Debug.Log("TRIANGLE:"+currentTri+"   HEART:"+currentHeart);
 					tilemap.SetTile(cellPosition1,null);
 					tilemap.SetTile(cellPosition2,tb1);
