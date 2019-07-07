@@ -23,5 +23,7 @@ public class prop_collect : MonoBehaviour
 		if(probtype==0) cat.currentHeart++;
 		else cat.currentTri++;
 		Destroy(gameObject);
+		GameObject tmp = (GameObject)Resources.Load("prefab/Item_Source");
+		Instantiate(tmp);	//	实例化
 	}
 }
